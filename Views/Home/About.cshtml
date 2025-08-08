@@ -1,0 +1,177 @@
+@{
+    ViewData["Title"] = "About This App";
+}
+
+@section Styles {
+    <style>
+        body {
+            background: #fdfbff;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .about-container {
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .about-card {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 40px 30px;
+            max-width: 900px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .about-card h1 {
+            font-size: clamp(22px, 4vw, 32px);
+            font-weight: 800;
+            background: linear-gradient(to right, #8b5cf6, #ec4899, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .badge {
+            display: inline-block;
+            margin: 8px auto 24px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-weight: 700;
+            text-align: center;
+            background: linear-gradient(90deg, rgba(239, 68, 68, 0.12), rgba(220, 38, 38, 0.08));
+            color: #991b1b;
+            border: 1px solid rgba(239, 68, 68, 0.12);
+            font-size: clamp(12px, 2vw, 14px);
+        }
+
+        .about-card p {
+            font-size: clamp(14px, 2vw, 16px);
+            color: #374151;
+            line-height: 1.7;
+            margin: 12px 0;
+        }
+
+        .about-card ul {
+            margin-top: 12px;
+            color: #374151;
+            list-style: disc;
+            padding-left: 22px;
+            font-size: clamp(14px, 2vw, 16px);
+        }
+
+        .about-card h3 {
+            margin-top: 18px;
+            margin-bottom: 10px;
+            color: #111827;
+            font-size: clamp(16px, 2.5vw, 20px);
+        }
+
+        .tech-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .tech-item {
+            background: #f8fafc;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: clamp(12px, 2vw, 14px);
+            color: #374151;
+        }
+
+        .github-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            background: linear-gradient(to right, #8b5cf6, #ec4899);
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-size: clamp(14px, 2vw, 16px);
+        }
+
+        .github-link:hover {
+            opacity: 0.88;
+        }
+
+        .author {
+            margin-top: 18px;
+            font-style: italic;
+            color: #6b7280;
+            text-align: right;
+            font-size: clamp(12px, 1.8vw, 14px);
+        }
+
+
+        @@media (max-width: 640px) {
+            .about-container {
+                padding: 20px 12px;
+            }
+
+            .about-card {
+                padding: 24px 18px;
+            }
+        }
+
+
+        @@media (max-width: 380px) {
+            .about-card {
+                padding: 18px 14px;
+            }
+
+            .badge {
+                padding: 6px 10px;
+            }
+        }
+    </style>
+}
+
+<div class="about-container">
+    <div class="about-card" role="main" aria-labelledby="about-title">
+        <h1 id="about-title">About This App</h1>
+        <p>
+            This is a <strong>backend-focused</strong> anonymous messaging platform implemented with <strong>ASP.NET
+                Core MVC</strong>.
+            The project is intentionally designed to highlight backend engineering practices — scalability,
+            observability, secure session/auth management, and resilient background processing — rather than
+            fancy frontend features.
+        </p>
+
+        <h3>Main Backend Features</h3>
+        <ul>
+            <li><strong>Automatic message lifecycle:</strong> messages expire and are removed after <strong>24 hours
+                </strong>to preserve privacy.</li>
+            <li><strong>Robust logging:</strong> structured and centralized logging for monitoring, troubleshooting, and
+                audit trails.</li>
+            <li><strong>Rate limiting:</strong> request throttling to prevent spam and abuse (per-IP and per-endpoint
+                policies).</li>
+            <li><strong>Background services:</strong> hosted services handle scheduled cleanup, maintenance tasks, and
+                asynchronous jobs.</li>
+            <li><strong>Authentication & security:</strong> secure cookie/session management and safe persistence with
+                EF Core.</li>
+            <li><strong>Persistence:</strong> SQLite + Entity Framework Core used for simple, reproducible deployments;
+                can be swapped for other RDBMS.</li>
+        </ul>
+
+        <h3>Open Source</h3>
+        <p>
+            This is a <strong>public GitHub repository</strong>. You can freely <strong>download, run, and
+                modify</strong> this project by following the instructions provided in the repository’s README file.
+        </p>
+
+        <a class="github-link" href="https://github.com/mohamed-osman-se/RUM.git" target="_blank" rel="noopener">
+            View on GitHub
+        </a>
+    </div>
+</div>

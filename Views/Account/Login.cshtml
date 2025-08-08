@@ -81,6 +81,23 @@
             opacity: 0.85;
         }
 
+        .signup-link {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #4b5563;
+        }
+
+        .signup-link a {
+            color: #8b5cf6;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
         @@media (max-width: 600px) {
             .login-card {
                 padding: 25px 20px;
@@ -112,6 +129,11 @@
 
         <button type="submit">Login</button>
     </form>
+
+    <div class="signup-link">
+        Don’t have an account?
+        <a asp-controller="Account" asp-action="Create">Create one</a>
+    </div>
 </div>
 
 @section Scripts {

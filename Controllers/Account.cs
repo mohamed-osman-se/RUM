@@ -24,6 +24,10 @@ namespace RUM.Controllers
         [HttpGet("Create")]
         public IActionResult Create()
         {
+            if (User!.Identity!.IsAuthenticated)
+            {
+                return Redirect("/Anonymous/Inbox");
+            }
             _logger.LogInformation("GET /Account/Create called");
             return View();
         }
@@ -36,6 +40,7 @@ namespace RUM.Controllers
                 _logger.LogWarning("Invalid model state on Create user: {@Model}", dto);
                 return BadRequest();
             }
+
 
             var user = new User
             {
@@ -57,6 +62,10 @@ namespace RUM.Controllers
         [HttpGet("Login")]
         public IActionResult Login()
         {
+            if (User!.Identity!.IsAuthenticated)
+            {
+                return Redirect("/Anonymous/Inbox");
+            }
             _logger.LogInformation("GET /Account/Login called");
             return View();
         }
