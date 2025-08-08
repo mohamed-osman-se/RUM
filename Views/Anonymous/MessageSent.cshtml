@@ -1,0 +1,93 @@
+@{
+    ViewData["Title"] = "Message Sent";
+    Layout = "_Layout";
+    var receiverUsername = TempData["ReceiverUsername"]?.ToString();
+}
+
+@section Styles {
+    <style>
+        body {
+            background: #fdfbff;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+        }
+
+        .success-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+            padding: 20px;
+        }
+
+        .card-success {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 40px 30px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .emoji {
+            font-size: 56px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 30px;
+            font-weight: 800;
+            background: linear-gradient(to right, #8b5cf6, #ec4899, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 14px;
+        }
+
+        p {
+            font-size: 17px;
+            font-weight: 500;
+            color: #6b7280;
+            margin-bottom: 30px;
+        }
+
+        .btn-back {
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(to right, #ec4899, #ef4444);
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: opacity 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-back:hover {
+            opacity: 0.85;
+        }
+
+        @@media (max-width: 600px) {
+            .card-success {
+                padding: 25px 20px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            .btn-back {
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+}
+
+<div class="success-container">
+    <div class="card-success" role="alert" aria-live="polite">
+        <div class="emoji" aria-hidden="true">🎉</div>
+        <h2>Thank you!</h2>
+        <p>Your anonymous message has been sent successfully.</p>
+        <a href="/Anonymous/Send/@receiverUsername" class="btn-back">Send Another Message</a>
+    </div>
+</div>

@@ -1,0 +1,231 @@
+@using System.Globalization
+@{
+    ViewData["Title"] = "Inbox";
+    var publicLink = ViewBag.PublicLink as string;
+    var messages = ViewBag.Messages as List<Message>;
+}
+
+@section Styles {
+    <style>
+        body {
+            background: #fdfbff;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+        }
+
+        .public-link-container {
+            max-width: 700px;
+            margin: 50px auto;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .section-title {
+            font-size: 30px;
+            font-weight: 800;
+            text-align: center;
+            background: linear-gradient(to right, #8b5cf6, #ec4899, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(to right, #8b5cf6, #ec4899);
+            display: block;
+            margin: 10px auto 0;
+            border-radius: 4px;
+        }
+
+        .message-card {
+            background: #faf5ff;
+            border-left: 6px solid #d946ef;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .message-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .message-header {
+            font-size: 18px;
+            font-weight: 700;
+            color: #7c3aed;
+        }
+
+        .message-body {
+            display: none;
+            margin-top: 12px;
+        }
+
+        .message-card.open .message-body {
+            display: block;
+        }
+
+        .message-content {
+            font-size: 17px;
+            font-weight: 500;
+            line-height: 1.8;
+            color: #1e1e2f;
+            white-space: pre-wrap;
+        }
+
+        .message-time {
+            font-size: 14px;
+            color: #6b7280;
+            margin-top: 12px;
+        }
+
+        .download-btn {
+            position: absolute;
+            bottom: 14px;
+            right: 16px;
+            background: linear-gradient(to right, #8b5cf6, #ec4899);
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .download-btn:hover {
+            opacity: 0.85;
+        }
+
+        .no-messages {
+            text-align: center;
+            background: #f3e8ff;
+            border-radius: 10px;
+            padding: 20px;
+            color: #9333ea;
+            font-size: 18px;
+        }
+
+        .public-link-footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .input-group {
+            display: flex;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #fdf4ff;
+        }
+
+        .input-group input {
+            flex: 1;
+            padding: 14px 16px;
+            border: none;
+            font-size: 16px;
+            background: transparent;
+            color: #4b5563;
+        }
+
+        .input-group button {
+            background: linear-gradient(to right, #ec4899, #ef4444);
+            color: white;
+            border: none;
+            padding: 14px 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .input-group button:hover {
+            filter: brightness(1.1);
+        }
+
+        .copy-alert {
+            text-align: center;
+            color: #16a34a;
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+}
+
+<div class="public-link-container">
+    <div class="section-title">Inbox Messages</div>
+
+    @if (messages == null || !messages.Any())
+    {
+        <div class="no-messages">No messages yet.</div>
+    }
+    else
+    {
+        int index = 0;
+        foreach (var msg in messages)
+        {
+            <div class="message-card" id="msgCard_@index" onclick="toggleCard(@index)">
+                <div class="message-header">Message @(@index + 1)</div>
+
+                <div class="message-body">
+                    <div class="message-content">@msg.Content</div>
+                    <div class="message-time">@msg.CreatedAt.ToLocalTime().ToString("g", CultureInfo.InvariantCulture)</div>
+                    <button class="download-btn" onclick="event.stopPropagation(); downloadCard(@index)">Download</button>
+                </div>
+            </div>
+            index++;
+        }
+    }
+
+    <div class="public-link-footer">
+        <h5 class="section-title" style="font-size:20px;">Your Public Link</h5>
+        <div class="input-group mb-2">
+            <input type="text" value="@publicLink" id="publicLink" readonly>
+            <button onclick="copyLink()">Copy</button>
+        </div>
+        <div id="copyAlert" class="copy-alert">✅ Link copied to clipboard!</div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script>
+        function copyLink() {
+            const copyText = document.getElementById("publicLink");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+
+            const alertBox = document.getElementById("copyAlert");
+            alertBox.style.display = "block";
+            setTimeout(() => {
+                alertBox.style.display = "none";
+            }, 2000);
+        }
+
+        function downloadCard(index) {
+            const card = document.getElementById(`msgCard_${index}`);
+            html2canvas(card).then(canvas => {
+                const link = document.createElement('a');
+                link.download = `message_${index + 1}.png`;
+                link.href = canvas.toDataURL();
+                link.click();
+            });
+        }
+
+        function toggleCard(index) {
+            const card = document.getElementById(`msgCard_${index}`);
+            card.classList.toggle('open');
+        }
+    </script>
+}

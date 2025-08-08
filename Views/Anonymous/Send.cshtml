@@ -1,0 +1,107 @@
+@{
+    ViewData["Title"] = "Send Anonymous Message";
+    var userName = ViewBag.UserName as string;
+    var userId = ViewBag.UserId;
+}
+
+@section Styles {
+    <style>
+        body {
+            background: #fdfbff;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+        }
+
+        .send-card {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 40px 30px;
+            max-width: 550px;
+            margin: 60px auto;
+            text-align: center;
+        }
+
+        .send-card h2 {
+            font-size: 30px;
+            font-weight: 800;
+            background: linear-gradient(to right, #8b5cf6, #ec4899, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 16px;
+        }
+
+        .send-card p {
+            font-size: 17px;
+            font-weight: 500;
+            color: #6b7280;
+            margin-bottom: 30px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid #f0abfc;
+            font-size: 16px;
+            resize: vertical;
+            background: #fdf4ff;
+            color: #1e1e2f;
+            outline: none;
+            transition: border 0.3s ease;
+        }
+
+        textarea:focus {
+            border-color: #d946ef;
+        }
+
+        button {
+            margin-top: 25px;
+            background: linear-gradient(to right, #ec4899, #ef4444);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        @@media (max-width: 600px) {
+            .send-card {
+                padding: 25px 20px;
+            }
+
+            textarea {
+                font-size: 14px;
+                padding: 12px;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 12px 20px;
+            }
+        }
+    </style>
+}
+
+<div class="send-card">
+    <h2>@("@" + userName)</h2>
+    <p>Send me anonymous message!</p>
+
+    <form asp-action="PostMsg" asp-controller="Anonymous" method="post">
+        <input type="hidden" name="ReceiverId" value="@userId" />
+
+        <div>
+            <textarea name="Content" rows="5" placeholder="Write your message here..." required></textarea>
+        </div>
+
+        <div>
+            <button type="submit">Send</button>
+        </div>
+    </form>
+</div>
