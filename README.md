@@ -1,4 +1,4 @@
-# 💌 RUM – Anonymous Messaging App
+#  RUM – Anonymous Messaging App
 
 Welcome to **RUM** (*Receive Unknown Messages*) — a secure, production-ready web app that lets users create accounts, generate public links, and receive anonymous messages, all while focusing on robust backend architecture.
 
@@ -13,7 +13,6 @@ https://rum.runasp.net/
 
 This project reflects how I would design and implement a **secure, scalable, and maintainable** backend system in a real-world job environment.  
 
-It covers everything a recruiter or hiring manager looks for:
 
 ✅ Clean architecture using ASP.NET Core MVC  
 ✅ Cookie-based authentication for secure sessions  
@@ -48,9 +47,18 @@ It covers everything a recruiter or hiring manager looks for:
 - .NET SDK 9 or later  
 - SQLite  
 
-**Steps**  
+## Steps (Git & Docker)
+
 ```bash
+# Clone the repository
 git clone https://github.com/yourusername/RUM.git
 cd RUM
+
+# Run locally
 dotnet restore
 dotnet run
+
+# Or run with Docker
+docker build -t rum-app .
+docker run -p 8080:80 rum-app
+
