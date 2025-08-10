@@ -1,4 +1,5 @@
-#  RUM – Anonymous Messaging App
+# <img width="64" height="64" alt="image" src="https://github.com/user-attachments/assets/3a9a63ab-87e7-4eb0-93a4-de6b20f3fc28" />
+ RUM – Anonymous Messaging App
 
 Welcome to **RUM** (*Receive Unknown Messages*) — a secure, production-ready web app that lets users create accounts, generate public links, and receive anonymous messages, all while focusing on robust backend architecture.
 
@@ -45,20 +46,25 @@ This project reflects how I would design and implement a **secure, scalable, and
 
 **Prerequisites**  
 - .NET SDK 9 or later  
-- SQLite  
+- SQLite
+- Docker (optional)
 
-## Steps (Git & Docker)
-
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/RUM.git
-cd RUM
+## Steps 
 
 # Run locally
+```bash
+# Clone the repository
+git clone https://github.com/mohamed-osman-se/RUM.git
+cd RUM
 dotnet restore
 dotnet run
+```
 
-# Or run with Docker
+# Run with Docker
+```bash
+# Clone the repository
+git clone https://github.com/mohamed-osman-se/RUM.git
+cd RUM
 docker build -t rum-app .
 docker run -p 8080:80 rum-app
 
