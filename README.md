@@ -26,7 +26,6 @@ This project reflects how I would design and implement a **secure, scalable, and
 
 ---
 
-https://youtu.be/G24IneaZaUk?feature=shared
 
 ## Video Demo
 
