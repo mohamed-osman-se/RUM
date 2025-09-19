@@ -26,6 +26,14 @@ This project reflects how I would design and implement a **secure, scalable, and
 
 ---
 
+https://youtu.be/G24IneaZaUk?feature=shared
+
+## Video Demo
+
+[![Watch the video](https://img.youtube.com/vi/G24IneaZaUk/0.jpg)](https://youtu.be/G24IneaZaUk?feature=shared)
+
+---
+
 ## 🛠️ Technologies Used
 
 | Area             | Technology |
