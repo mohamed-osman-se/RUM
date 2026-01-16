@@ -89,17 +89,19 @@ docker build -t rum-app .
 docker run -p 8080:80 rum-app
 ```
 
+
 ---
 
 ## Future Improvements
 
-The current implementation focuses on core functionality and backend fundamentals.  
+The current implementation focuses on core backend functionality and fundamentals.  
 Possible future improvements include:
 
-- Publishing a pre-built image on Docker Hub to simplify setup and deployment.
-- Adding automated tests to improve reliability and maintainability.
-- Introducing a basic CI pipeline to run tests and builds on each change.
+- Publishing a pre-built Docker image on **Docker Hub** to simplify setup and deployment.
+- Adding automated unit and integration tests.
+- Introducing a **CI/CD pipeline using GitHub Actions** to automatically run tests and builds on each pull request.
+- Enabling continuous deployment after successful validation.
 - Improving monitoring and health checks for better observability.
 
-These items are not part of the current scope but represent natural next steps.
+These items are not part of the current scope and represent natural next steps.
 
