@@ -1,8 +1,6 @@
-<p align="center">
-  <img width="64" height="64" alt="RUM Logo" src="https://github.com/user-attachments/assets/3a9a63ab-87e7-4eb0-93a4-de6b20f3fc28" />
-</p>
-# RUM – Anonymous Messaging App
+<img align="left" width="64" height="64" alt="RUM Logo" src="https://github.com/user-attachments/assets/3a9a63ab-87e7-4eb0-93a4-de6b20f3fc28" />
 
+# RUM – Anonymous Messaging App
 RUM (Receive Unknown Messages) is a production-ready web application that allows users to create accounts, generate public links, and receive anonymous messages securely.
 
 This project was built to demonstrate **real-world backend engineering practices**, focusing on clean architecture, security, background processing, and maintainability.
