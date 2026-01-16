@@ -7,8 +7,6 @@
 ![.NET](https://img.shields.io/badge/.NET-9-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-RUM (Receive Unknown Messages) is a production-ready web application ...
-
 RUM (Receive Unknown Messages) is a production-ready web application that allows users to create accounts, generate public links, and receive anonymous messages securely.
 
 This project was built to demonstrate **real-world backend engineering practices**, focusing on clean architecture, security, background processing, and maintainability.
@@ -99,10 +97,9 @@ docker build -t rum-app .
 docker run -p 8080:80 rum-app
 ```
 
-
 ---
 
-## Future Improvements
+## Future Improvements & Contributions
 
 The current implementation focuses on core backend functionality and fundamentals.  
 Possible future improvements include:
@@ -113,5 +110,6 @@ Possible future improvements include:
 - Enabling continuous deployment after successful validation.
 - Improving monitoring and health checks for better observability.
 
-These items are not part of the current scope and represent natural next steps.
+These items are not part of the current scope and represent natural next steps.  
+**Contributions are welcome via fork and pull request** to help implement these improvements.
 
