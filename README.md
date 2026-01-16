@@ -1,31 +1,47 @@
-# <img width="64" height="64" alt="image" src="https://github.com/user-attachments/assets/3a9a63ab-87e7-4eb0-93a4-de6b20f3fc28" /> RUM – Anonymous Messaging App
 
-Welcome to **RUM** (*Receive Unknown Messages*) — a secure, production-ready web app that lets users create accounts, generate public links, and receive anonymous messages, all while focusing on robust backend architecture.
+# RUM – Anonymous Messaging App
 
-I built this project to demonstrate my **backend development skills** in real-world scenarios including authentication, background processing, rate limiting, logging, and containerization — with clean, maintainable code and modern design patterns.
+RUM (Receive Unknown Messages) is a production-ready web application that allows users to create accounts, generate public links, and receive anonymous messages securely.
 
-🔗 **Live Demo** (HTTPS Enabled):  
-https://rum.runasp.net/
+This project was built to demonstrate **real-world backend engineering practices**, focusing on clean architecture, security, background processing, and maintainability.
 
 ---
 
-## 🧠 Why This Project?
+## Live Demo
 
-This project reflects how I would design and implement a **secure, scalable, and maintainable** backend system in a real-world job environment.  
+**URL:** https://rum.runasp.net/
 
-
-✅ Clean architecture using ASP.NET Core MVC  
-✅ Cookie-based authentication for secure sessions  
-✅ Public user links for receiving anonymous messages  
-✅ Background service to auto-delete messages after 24 hours  
-✅ Rate limiting to prevent spam and abuse  
-✅ Structured logging using Serilog  
-✅ Repository Pattern for maintainable data access  
-✅ Docker-ready deployment for consistent environments  
-✅ Free hosting with HTTPS enabled  
+> **Note:**  
+> The application is deployed on a **free trial hosting service**.  
+> As a result, the app may occasionally be unavailable, partially functional, or experience cold starts due to hosting limitations.
 
 ---
 
+## Project Motivation
+
+The goal of this project is to showcase how I design and implement a **scalable, secure backend system** similar to what would be expected in a professional production environment.
+
+Key focus areas:
+- Authentication and session management
+- Abuse prevention and rate limiting
+- Background processing
+- Clean and maintainable architecture
+- Containerized deployment
+
+---
+
+## Core Features
+
+- User registration and authentication (cookie-based sessions)
+- Public profile links to receive anonymous messages
+- Anonymous message submission without authentication
+- Automatic message deletion after 24 hours using a background service
+- Rate limiting to mitigate spam and abuse
+- Structured logging for observability
+- Repository pattern for clean data access
+- Dockerized deployment for consistent environments
+
+---
 
 ## Video Demo
 
@@ -33,44 +49,46 @@ This project reflects how I would design and implement a **secure, scalable, and
 
 ---
 
-## 🛠️ Technologies Used
+## Technology Stack
 
-| Area             | Technology |
-|------------------|------------|
-| Language         | C# (.NET 9 SDK) |
-| Framework        | ASP.NET Core MVC |
-| Authentication   | Cookie-based authentication |
-| Database         | SQLite (EF Core ORM) |
-| Logging          | Serilog |
-| Architecture     | Repository Pattern, Dependency Injection |
-| Containerization | Docker |
-| Hosting          | Free ASP.NET Hosting (HTTPS Enabled) |
+| Category           | Technology |
+|--------------------|------------|
+| Language           | C# (.NET 9 SDK) |
+| Framework          | ASP.NET Core MVC |
+| Authentication     | Cookie-based Authentication |
+| Database           | SQLite with Entity Framework Core |
+| Logging            | Serilog |
+| Architecture       | Repository Pattern, Dependency Injection |
+| Background Jobs    | Hosted Background Services |
+| Containerization   | Docker |
+| Hosting            | Free ASP.NET Hosting (HTTPS) |
 
 ---
 
+## Prerequisites
 
-
-**Prerequisites**  
 - .NET SDK 9 or later  
-- SQLite
+- SQLite  
 - Docker (optional)
 
-# Steps 
+---
 
-## Run locally
+## Running the Project Locally
+
 ```bash
-# Clone the repository
 git clone https://github.com/mohamed-osman-se/RUM.git
 cd RUM
 dotnet restore
 dotnet run
 ```
 
-## Run with Docker
+## Running with Docker 
+
 ```bash
-# Clone the repository
 git clone https://github.com/mohamed-osman-se/RUM.git
 cd RUM
 docker build -t rum-app .
 docker run -p 8080:80 rum-app
+```
+
 
